@@ -1,0 +1,101 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    03/15/2024  08:38:38  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE De_Electro_Test.obj TO De_Electro_Test RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  De_Electro_Test.obj (DE_ELECTRO_TEST)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  De_Electro_Test (DE_ELECTRO_TEST)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?MAIN?DE_ELECTRO_TEST
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     000FH     UNIT         ?PR?MAIN?DE_ELECTRO_TEST
+            CODE    0012H     000DH     UNIT         ?PR?PORTS_INIT?DE_ELECTRO_TEST
+            CODE    001FH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   De_Electro_Test (DE_ELECTRO_TEST)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?DE_ELECTRO_TEST
+
+?PR?MAIN?DE_ELECTRO_TEST
+  +--> ?PR?PORTS_INIT?DE_ELECTRO_TEST
+
+
+
+SYMBOL TABLE OF MODULE:  De_Electro_Test (DE_ELECTRO_TEST)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DE_ELECTRO_TEST
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  C:0003H         PUBLIC        Main
+  D:00E8H         PUBLIC        ADC0CN
+  D:00A4H         PUBLIC        P0MDOUT
+  D:00A8H         PUBLIC        IE
+  D:00D9H         PUBLIC        PCA0MD
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  03/15/2024  08:38:38  PAGE 2
+
+
+  D:00D8H         PUBLIC        PCA0CN
+  D:00B8H         PUBLIC        IP
+  D:00E3H         PUBLIC        XBR2
+  D:00C0H         PUBLIC        SMB0CN
+  D:00F8H         PUBLIC        CPT0CN
+  C:0012H         PUBLIC        Ports_init
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        TMR2CN
+  D:0098H         PUBLIC        SCON0
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        byV_Counter
+  -------         ENDDO         
+  C:0003H         LINE#         39
+  C:0003H         LINE#         40
+  C:0003H         LINE#         41
+  C:0006H         LINE#         44
+  C:0009H         LINE#         46
+  C:000CH         LINE#         48
+  C:000CH         LINE#         49
+  C:000CH         LINE#         50
+  C:000FH         LINE#         51
+  -------         ENDPROC       MAIN
+  -------         PROC          PORTS_INIT
+  C:0012H         LINE#         54
+  C:0012H         LINE#         67
+  C:0012H         LINE#         71
+  C:0015H         LINE#         72
+  C:0018H         LINE#         75
+  C:001BH         LINE#         77
+  C:001EH         LINE#         78
+  -------         ENDPROC       PORTS_INIT
+  -------         ENDMOD        DE_ELECTRO_TEST
+
+Program Size: data=10.0 xdata=0 code=43
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

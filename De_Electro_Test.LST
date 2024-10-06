@@ -1,0 +1,103 @@
+C51 COMPILER V9.60.0.0   DE_ELECTRO_TEST                                                   03/15/2024 08:38:38 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DE_ELECTRO_TEST
+OBJECT MODULE PLACED IN De_Electro_Test.OBJ
+COMPILER INVOKED BY: c:\Keil_v5\C51\BIN\C51.EXE De_Electro_Test.c OPTIMIZE(0,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(3)
+
+line level    source
+
+   1          // Titre          : 
+   2          // Source            : 
+   3          // Auteur            : 
+   4          // Lieu              : 
+   5          // Création       : 
+   6          // Description : 
+   7          //===============================================================================
+   8          
+   9          #include <c8051f300.h>  // inclure fichier définition SFR
+  10          #include <intrins.h>    // librairie intrins
+  11          
+  12          // *** NOUVEAUX TYPES ***
+  13          typedef unsigned char uint8;     // 8 bits non signé
+  14          typedef signed char int8;        // 8 bits signé
+  15          typedef unsigned int uint16;     // 16 bits non signé
+  16          typedef signed int int16;        // 16 bits signé
+  17          typedef unsigned long uint32;    // 32 bits non signé
+  18          typedef signed long int32;       // 32 bits signé
+  19          
+  20          // Equivalences
+  21          #define BIT0   0x01
+  22          #define BIT1   0x02
+  23          #define BIT2   0x04
+  24          #define BIT3   0x08
+  25          #define BIT4   0x10
+  26          #define BIT5   0x20
+  27          #define BIT6   0x40
+  28          #define BIT7   0x80  
+  29          
+  30          #define CFG_IO 0x84  
+  31          
+  32          // Entrées:
+  33          #define BYES_IO P0   //entrées dé
+  34             
+  35          // Prototypes de fonctions (déclarations)
+  36          void Ports_init(void);     //Initialisation des ports
+  37          
+  38          // Programme principal
+  39          void Main(void)
+  40          {
+  41   1         char byV_Counter = 1;
+  42   1         
+  43   1         //Disable watchdog timer
+  44   1         PCA0MD &= ~BIT6;  //WDTE = 0;
+  45   1         
+  46   1         Ports_init();                 // initialisation des ports 8 - 0
+  47   1      
+  48   1         while(1)
+  49   1         {
+  50   2            BYES_IO = CFG_IO | 0x00;/*Data*/
+  51   2         }
+  52   1      }
+  53          
+  54          void Ports_init(void)
+  55          // Fonction
+C51 COMPILER V9.60.0.0   DE_ELECTRO_TEST                                                   03/15/2024 08:38:38 PAGE 2   
+
+  56          // Description : Initialise les ports 8 - 0
+  57          //                            Digital Outputs
+  58          //                            Digital inputs
+  59          //                            Analog Inputs (P1)
+  60          //                      Default state P 7 - 0 : 
+  61          //                            Weak Pull up enable
+  62          //                            Open Drain
+  63          //                            Data 0xFF
+  64          //                            
+  65          // Entrées        : Aucun
+  66          // Sorties        : Aucun
+  67          {
+  68   1         // Equivalences pour initialisation Port
+  69   1      
+  70   1         // initialisation du port 0:
+  71   1         P0MDOUT = ~CFG_IO;   // Port P0 en entrée open drain --> a corriger
+  72   1         P0 = CFG_IO;
+  73   1         
+  74   1         //initialisation du crossbar "ne pas toucher"
+  75   1         XBR2 &= (~BIT7);              //active weak pull-up pour les Ports 0 - 3 (default state)
+  76   1         //XBR2 |= (BIT7);             //desactive weak pull-up   
+  77   1         XBR2 |= (BIT6);               // XBARE: enable crossbar (active toutes les I/O)
+  78   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     28    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
